@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebStudio — Web Development & Telegram Bots</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FAFAF8;
+    --bg-card: #FFFFFF;
+    --text: #1A1A1A;
+    --text-secondary: #6B6B6B;
+    --accent: #2563EB;
+    --accent-light: #EFF6FF;
+    --border: #E8E8E4;
+    --radius: 16px;
+    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Instrument Serif', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,.06); }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem; color: var(--text);
+    text-decoration: none; letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-secondary);
+    font-size: .9rem; font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--text) !important; color: #fff !important;
+    padding: 10px 24px !important; border-radius: 100px;
+    font-weight: 600 !important; font-size: .85rem !important;
+    transition: transform .2s, box-shadow .2s !important;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger svg { width: 24px; height: 24px; stroke: var(--text); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 32px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .section-subtitle {
+    color: var(--text-secondary); font-size: 1.1rem;
+    max-width: 560px; line-height: 1.7;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 160px; padding-bottom: 120px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(37,99,235,.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero .section-title {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    max-width: 800px; margin: 0 auto 24px;
+  }
+  .hero .section-subtitle {
+    margin: 0 auto 48px; max-width: 520px; font-size: 1.15rem;
+  }
+  .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; border-radius: 100px;
+    font-family: var(--font-body); font-size: .95rem; font-weight: 600;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all .25s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1D4ED8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,.25); }
+  .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--text); }
+  .btn svg { width: 18px; height: 18px; }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 64px; margin-top: 72px;
+    padding-top: 48px; border-top: 1px solid var(--border);
+  }
+  .stat-number {
+    font-family: var(--font-display); font-size: 2.4rem; line-height: 1;
+    color: var(--text);
+  }
+  .stat-label { font-size: .85rem; color: var(--text-secondary); margin-top: 6px; }
+
+  /* ─── SERVICES ─── */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 56px;
+  }
+  .service-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 40px 32px;
+    transition: all .3s; position: relative; overflow: hidden;
+    text-decoration: none; color: inherit;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.06);
+    border-color: var(--accent);
+  }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+  }
+  .service-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+  .service-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 12px; }
+  .service-card p { color: var(--text-secondary); font-size: .92rem; line-height: 1.7; }
+  .service-card .arrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 20px; font-size: .85rem; font-weight: 600; color: var(--accent);
+  }
+
+  /* ─── PORTFOLIO ─── */
+  #portfolio { background: #fff; }
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 56px;
+  }
+  .project-card {
+    border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); background: var(--bg);
+    transition: all .3s; cursor: pointer;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+  .project-thumb {
+    width: 100%; aspect-ratio: 16/10;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.3rem;
+    color: var(--text-secondary);
+  }
+  .project-thumb.c1 { background: linear-gradient(135deg, #EEF2FF, #DBEAFE); }
+  .project-thumb.c2 { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); }
+  .project-thumb.c3 { background: linear-gradient(135deg, #FFF7ED, #FED7AA); }
+  .project-thumb.c4 { background: linear-gradient(135deg, #FDF2F8, #FCE7F3); }
+  .project-thumb.c5 { background: linear-gradient(135deg, #F5F3FF, #EDE9FE); }
+  .project-thumb.c6 { background: linear-gradient(135deg, #ECFEFF, #CFFAFE); }
+  .project-info { padding: 20px 24px; }
+  .project-info h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+  .project-info p { font-size: .85rem; color: var(--text-secondary); }
+  .project-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .project-tags span {
+    font-size: .72rem; font-weight: 500; padding: 4px 12px;
+    border-radius: 100px; background: var(--bg); border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .portfolio-more {
+    text-align: center; margin-top: 48px;
+  }
+
+  /* ─── PRICING ─── */
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 56px; align-items: start;
+  }
+  .price-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 40px 32px;
+    position: relative; transition: all .3s;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+  .price-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .price-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #fff;
+    font-size: .72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; padding: 5px 18px; border-radius: 100px;
+  }
+  .price-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .price-card .price {
+    font-family: var(--font-display); font-size: 2.6rem; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-card .price-note { font-size: .82rem; color: var(--text-secondary); margin-bottom: 28px; }
+  .price-features { list-style: none; margin-bottom: 32px; }
+  .price-features li {
+    font-size: .9rem; color: var(--text-secondary);
+    padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .price-features li::before {
+    content: '✓'; color: var(--accent); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .price-card .btn { width: 100%; justify-content: center; }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { background: #fff; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 56px;
+  }
+  .testimonial-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 32px;
+  }
+  .testimonial-card .stars { color: #F59E0B; font-size: .9rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .testimonial-card blockquote {
+    font-size: .95rem; line-height: 1.75; color: var(--text);
+    margin-bottom: 24px; font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: var(--accent); font-size: .85rem;
+  }
+  .testimonial-name { font-weight: 600; font-size: .9rem; }
+  .testimonial-role { font-size: .8rem; color: var(--text-secondary); }
+
+  /* ─── CONTACT ─── */
+  .contact-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px;
+  }
+  .contact-info h3 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 16px; }
+  .contact-info p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; }
+  .contact-channels { display: flex; flex-direction: column; gap: 16px; }
+  .contact-channel {
+    display: flex; align-items: center; gap: 14px;
+    font-size: .95rem; color: var(--text);
+    text-decoration: none;
+  }
+  .contact-channel:hover { color: var(--accent); }
+  .channel-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .channel-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: flex; gap: 16px; }
+  .form-row > * { flex: 1; }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%; padding: 14px 18px;
+    border: 1.5px solid var(--border); border-radius: 12px;
+    font-family: var(--font-body); font-size: .92rem;
+    background: var(--bg-card); color: var(--text);
+    transition: border-color .2s;
+    outline: none;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus { border-color: var(--accent); }
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 48px 32px; border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy { font-size: .85rem; color: var(--text-secondary); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: .85rem; color: var(--text-secondary);
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: .1s; }
+  .delay-2 { transition-delay: .2s; }
+  .delay-3 { transition-delay: .3s; }
+  .delay-4 { transition-delay: .4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .services-grid, .portfolio-grid, .pricing-grid, .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+    .hero-stats { gap: 32px; flex-wrap: wrap; }
+    .form-row { flex-direction: column; gap: 16px; }
+  }
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(250,250,248,.97); backdrop-filter: blur(20px);
+      padding: 24px 32px; gap: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hamburger { display: block; }
+    section { padding: 72px 20px; }
+    .hero { padding-top: 130px; padding-bottom: 80px; }
+  }
+  @media (min-width: 700px) and (max-width: 900px) {
+    .services-grid, .portfolio-grid, .pricing-grid, .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">Web<span>Studio</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="section-label fade-up">Web Development Studio</div>
+    <h1 class="section-title fade-up delay-1">We build digital<br>products that <em>work</em></h1>
+    <p class="section-subtitle fade-up delay-2">Websites, web applications, and Telegram bots — crafted with clean code, thoughtful design, and a focus on real results.</p>
+    <div class="hero-buttons fade-up delay-3">
+      <a href="#contact" class="btn btn-primary">
+        Start a Project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#portfolio" class="btn btn-secondary">View Our Work</a>
+    </div>
+    <div class="hero-stats fade-up delay-4">
+      <div><div class="stat-number">120+</div><div class="stat-label">Projects delivered</div></div>
+      <div><div class="stat-number">4.9</div><div class="stat-label">Average rating</div></div>
+      <div><div class="stat-number">50+</div><div class="stat-label">Happy clients</div></div>
+      <div><div class="stat-number">3 yrs</div><div class="stat-label">On the market</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label fade-up">What We Do</div>
+    <h2 class="section-title fade-up delay-1">Services</h2>
+    <p class="section-subtitle fade-up delay-2">From landing pages to complex web apps and smart Telegram bots — we've got you covered.</p>
+    <div class="services-grid">
+      <a href="services.html#websites" class="service-card fade-up delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Website Development</h3>
+        <p>Landing pages, corporate sites, e-commerce, and blogs. Fast, responsive, SEO-optimized — built to convert visitors into customers.</p>
+        <span class="arrow">Learn more →</span>
+      </a>
+      <a href="services.html#bots" class="service-card fade-up delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Telegram Bot Development</h3>
+        <p>Custom bots for automation, customer support, payments, notifications, CRM integration, and content delivery through Telegram.</p>
+        <span class="arrow">Learn more →</span>
+      </a>
+      <a href="services.html#apps" class="service-card fade-up delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+        </div>
+        <h3>Web Application Development</h3>
+        <p>SaaS platforms, dashboards, admin panels, CRM/ERP systems — scalable web applications with modern architecture.</p>
+        <span class="arrow">Learn more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label fade-up">Our Work</div>
+    <h2 class="section-title fade-up delay-1">Selected Projects</h2>
+    <p class="section-subtitle fade-up delay-2">A glimpse of what we've built for clients across various industries.</p>
+    <div class="portfolio-grid">
+      <div class="project-card fade-up delay-1">
+        <div class="project-thumb c1">E-Commerce</div>
+        <div class="project-info">
+          <h3>ShopFlow</h3>
+          <p>Full-featured online store with payment integration</p>
+          <div class="project-tags"><span>React</span><span>Node.js</span><span>Stripe</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-2">
+        <div class="project-thumb c2">Telegram Bot</div>
+        <div class="project-info">
+          <h3>OrderBot</h3>
+          <p>Automated ordering system for restaurant chain</p>
+          <div class="project-tags"><span>Python</span><span>Telegram API</span><span>PostgreSQL</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-3">
+        <div class="project-thumb c3">Web App</div>
+        <div class="project-info">
+          <h3>TaskHub</h3>
+          <p>Project management dashboard for remote teams</p>
+          <div class="project-tags"><span>Vue.js</span><span>Firebase</span><span>WebSocket</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-1">
+        <div class="project-thumb c4">Landing Page</div>
+        <div class="project-info">
+          <h3>FinBridge</h3>
+          <p>Conversion-focused landing for fintech startup</p>
+          <div class="project-tags"><span>HTML/CSS</span><span>GSAP</span><span>Figma</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-2">
+        <div class="project-thumb c5">Telegram Bot</div>
+        <div class="project-info">
+          <h3>SupportAI</h3>
+          <p>AI-powered customer support bot with CRM sync</p>
+          <div class="project-tags"><span>Python</span><span>OpenAI</span><span>Webhook</span></div>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-3">
+        <div class="project-thumb c6">SaaS Platform</div>
+        <div class="project-info">
+          <h3>AnalyticsPro</h3>
+          <p>Real-time analytics dashboard for e-commerce</p>
+          <div class="project-tags"><span>React</span><span>D3.js</span><span>AWS</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-more fade-up">
+      <a href="portfolio.html" class="btn btn-secondary">View All Projects →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-label fade-up">Pricing</div>
+    <h2 class="section-title fade-up delay-1">Transparent Pricing</h2>
+    <p class="section-subtitle fade-up delay-2">Clear starting prices. Every project is unique — let's discuss yours for an exact quote.</p>
+    <div class="pricing-grid">
+      <div class="price-card fade-up delay-1">
+        <h3>Landing Page</h3>
+        <div class="price">$800</div>
+        <div class="price-note">starting price</div>
+        <ul class="price-features">
+          <li>Custom responsive design</li>
+          <li>Up to 5 sections</li>
+          <li>Contact form integration</li>
+          <li>SEO optimization</li>
+          <li>Delivery in 5–7 days</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+      </div>
+      <div class="price-card featured fade-up delay-2">
+        <div class="price-badge">Popular</div>
+        <h3>Telegram Bot</h3>
+        <div class="price">$1,200</div>
+        <div class="price-note">starting price</div>
+        <ul class="price-features">
+          <li>Custom bot logic & flows</li>
+          <li>Database integration</li>
+          <li>Admin panel included</li>
+          <li>Payment system integration</li>
+          <li>Delivery in 7–14 days</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+      </div>
+      <div class="price-card fade-up delay-3">
+        <h3>Web Application</h3>
+        <div class="price">$3,000</div>
+        <div class="price-note">starting price</div>
+        <ul class="price-features">
+          <li>Full-stack development</li>
+          <li>User auth & roles</li>
+          <li>API integrations</li>
+          <li>Admin dashboard</li>
+          <li>Delivery in 3–6 weeks</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label fade-up">Testimonials</div>
+    <h2 class="section-title fade-up delay-1">What Clients Say</h2>
+    <p class="section-subtitle fade-up delay-2">Real feedback from real people we've worked with.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up delay-1">
+        <div class="stars">★★★★★</div>
+        <blockquote>"WebStudio delivered our e-commerce platform ahead of schedule. The attention to detail and clean code quality exceeded our expectations."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AK</div>
+          <div>
+            <div class="testimonial-name">Alex Kim</div>
+            <div class="testimonial-role">CEO, ShopFlow</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-2">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our Telegram bot handles 500+ orders daily without a hiccup. The team really understood our business needs and built exactly what we needed."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MR</div>
+          <div>
+            <div class="testimonial-name">Maria Rodriguez</div>
+            <div class="testimonial-role">Owner, FreshBites</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-3">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Professional, responsive, and technically excellent. They turned our complex dashboard idea into a smooth, intuitive application."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JT</div>
+          <div>
+            <div class="testimonial-name">James Turner</div>
+            <div class="testimonial-role">CTO, AnalyticsPro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label fade-up">Contact</div>
+    <h2 class="section-title fade-up delay-1">Let's Build Something</h2>
+    <div class="contact-wrap">
+      <div class="contact-info fade-up delay-2">
+        <h3>Ready to start your project?</h3>
+        <p>Tell us about your idea and we'll get back to you within 24 hours with a free estimate and project plan.</p>
+        <div class="contact-channels">
+          <a href="mailto:hello@webstudio.dev" class="contact-channel">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            hello@webstudio.dev
+          </a>
+          <a href="https://t.me/webstudio" class="contact-channel">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 4.6L2.5 11.1c-.6.2-.6 1.1 0 1.3l4.8 1.7 1.8 5.8c.2.5.8.6 1.2.3l2.7-2.2 5.1 3.7c.5.4 1.2.1 1.3-.5L22.8 5.5c.2-.7-.5-1.3-1.1-1z"/><line x1="10" y1="14" x2="21" y2="5"/></svg>
+            </div>
+            @webstudio
+          </a>
+          <a href="tel:+15551234567" class="contact-channel">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            +1 (555) 123-4567
+          </a>
+        </div>
+      </div>
+      <form class="contact-form fade-up delay-3" onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:60px 0;\'><h3 style=\'font-family:var(--font-display);font-size:1.5rem;margin-bottom:8px;\'>Thank you!</h3><p style=\'color:var(--text-secondary);\'>We\'ll get back to you within 24 hours.</p></div>'; ">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Email address" required>
+        </div>
+        <select required>
+          <option value="" disabled selected>What do you need?</option>
+          <option>Website Development</option>
+          <option>Telegram Bot</option>
+          <option>Web Application</option>
+          <option>Other</option>
+        </select>
+        <textarea placeholder="Tell us about your project..." required></textarea>
+        <button type="submit" class="btn btn-primary" style="border:none;">
+          Send Message
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="logo">Web<span>Studio</span></a>
+    <div class="footer-copy">© 2026 WebStudio. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
