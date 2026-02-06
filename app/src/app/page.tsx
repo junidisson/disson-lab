@@ -1,6 +1,9 @@
 import { MenuButton } from '@/components/MenuButton';
 import { Hero } from '@/components/Hero';
 import { Services } from '@/components/Services';
+import { About } from '@/components/About';
+import { Portfolio } from '@/components/Portfolio';
+import { Contact } from '@/components/Contact';
 
 export default function Home() {
   return (
@@ -8,19 +11,22 @@ export default function Home() {
       <MenuButton />
       <Hero />
       <Services />
+      <About />
+      <Portfolio />
+      <Contact />
       
-      {/* Placeholder sections */}
-      <section id="about" className="min-h-screen flex items-center justify-center bg-white">
-        <h2 className="font-display text-4xl text-forest">About — Coming soon</h2>
-      </section>
-      
-      <section id="portfolio" className="min-h-screen flex items-center justify-center bg-cream">
-        <h2 className="font-display text-4xl text-forest">Portfolio — Coming soon</h2>
-      </section>
-      
-      <section id="contact" className="min-h-screen flex items-center justify-center bg-white">
-        <h2 className="font-display text-4xl text-forest">Contact — Coming soon</h2>
-      </section>
+      {/* Footer */}
+      <footer className="py-8 px-6 bg-cream border-t border-forest/10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="font-display text-lg">
+            <span className="text-sage">Disson</span>
+            <span className="text-forest">Lab</span>
+          </div>
+          <p className="text-sm text-forest/50">
+            © 2026 Disson Lab. Grown with 🌱
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }
