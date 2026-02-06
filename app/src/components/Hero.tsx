@@ -25,7 +25,7 @@ export function Hero() {
         <p className="text-lg md:text-xl text-forest/85 tracking-wide mb-12 leading-relaxed">
           Websites. Web apps. Telegram bots.
           <br />
-          <span className="font-semibold text-sage">Built in harmony.</span>
+          <span className="font-semibold text-sage">Grown in harmony.</span>
         </p>
         
         {/* Minimal outline buttons */}
