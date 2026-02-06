@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disson Lab — Minimal Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --sage: #87A878;
+            --forest: #2D4739;
+            --cream: #FDFBF7;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Menu icon - top right - simple lines */
+        .menu-btn {
+            position: fixed;
+            top: 28px;
+            right: 28px;
+            z-index: 100;
+            width: 32px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .menu-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--forest);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 0 1.5px var(--cream),
+                0 0 0 2.5px var(--forest);
+        }
+        .menu-btn:hover span {
+            background: var(--sage);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, rgba(253,251,247,0.4) 0%, transparent 70%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 40px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .logo .disson { color: var(--sage); font-weight: 500; }
+        .logo .lab { color: var(--forest); font-weight: 600; }
+        
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 400;
+            color: var(--forest);
+            letter-spacing: 0.05em;
+            margin-bottom: 48px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+        .tagline .highlight {
+            font-weight: 600;
+            color: var(--sage);
+        }
+        
+        /* MINIMAL BUTTONS - symmetric size */
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            padding: 16px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+            color: var(--forest);
+            border: 1.5px solid var(--forest);
+        }
+        
+        .btn:hover {
+            background: var(--forest);
+            color: var(--cream);
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu button top right - simple lines -->
+    <button class="menu-btn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <section class="hero">
+        <img src="../assets/images/hero-background-hires.png" alt="" class="hero-bg">
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1 class="logo"><span class="disson">Disson</span><span class="lab">Lab</span></h1>
+            <p class="tagline">Websites. Web apps. Telegram bots.<br><span class="highlight">Built in harmony.</span></p>
+            
+            <div class="cta-group">
+                <a href="#contact" class="btn">Start a project</a>
+                <a href="#portfolio" class="btn">View our works</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
