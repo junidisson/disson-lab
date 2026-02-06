@@ -31,9 +31,9 @@ const services = [
         <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
       </svg>
     ),
-    title: 'AI Agents & Assistants',
-    description: 'We embed intelligent agents into your products — turning complex requests into clear, actionable answers your users actually need.',
-    features: ['Custom AI agents for workflows', 'Natural language interfaces', 'Semantic layers & knowledge retrieval', 'Embedded assistants for SaaS & internal tools'],
+    title: 'AI Agents',
+    description: 'We embed intelligent agents into your products — turning complex requests into clear, actionable answers.',
+    features: ['AI agents for any workflow', 'Natural language interfaces', 'Semantic layers & data retrieval', 'Embedded assistants'],
   },
   {
     icon: (
