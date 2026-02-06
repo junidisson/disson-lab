@@ -27,6 +27,17 @@ const services = [
   {
     icon: (
       <svg viewBox="0 0 24 24" className="w-7 h-7 stroke-forest fill-none stroke-[1.5]">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>
+    ),
+    title: 'AI Agents & Assistants',
+    description: 'We embed intelligent agents into your products — turning complex requests into clear, actionable answers your users actually need.',
+    features: ['Custom AI agents for workflows', 'Natural language interfaces', 'Semantic layers & knowledge retrieval', 'Embedded assistants for SaaS & internal tools'],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-7 h-7 stroke-forest fill-none stroke-[1.5]">
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
       </svg>
     ),
@@ -54,7 +65,7 @@ export function Services() {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
