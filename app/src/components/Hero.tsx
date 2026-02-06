@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 
 export function Hero() {
   return (
@@ -19,7 +18,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-20 max-w-4xl px-6 md:px-10">
         <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-2">
-          <span className="text-sage">Disson</span>
+          <span className="text-sage font-medium">Disson</span>
           <span className="text-forest">Lab</span>
         </h1>
         
@@ -29,19 +28,21 @@ export function Hero() {
           <span className="font-semibold text-sage">Built in harmony.</span>
         </p>
         
-        <Button 
-          size="lg" 
-          className="bg-forest hover:bg-forest/90 text-cream rounded-full px-8 py-6 text-base font-medium shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-        >
-          Start a Project
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-forest/60 animate-bounce">
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <ChevronDown className="h-5 w-5" />
+        {/* Minimal outline buttons */}
+        <div className="flex gap-4 justify-center flex-wrap">
+          <Link 
+            href="#contact" 
+            className="min-w-[180px] px-8 py-4 border-[1.5px] border-forest text-forest rounded-full font-medium transition-all hover:bg-forest hover:text-cream"
+          >
+            Start a project
+          </Link>
+          <Link 
+            href="#portfolio" 
+            className="min-w-[180px] px-8 py-4 border-[1.5px] border-forest text-forest rounded-full font-medium transition-all hover:bg-forest hover:text-cream"
+          >
+            View our works
+          </Link>
+        </div>
       </div>
     </section>
   );
