@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disson Lab — Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --sage: #87A878;
+            --forest: #2D4739;
+            --cream: #FDFBF7;
+            --wood: #D4C4B0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--forest);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .services {
+            min-height: 100vh;
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Section header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 20px;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--forest);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Service card */
+        .service-card {
+            background: white;
+            border: 1px solid rgba(45, 71, 57, 0.1);
+            border-radius: 16px;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(45, 71, 57, 0.08);
+            border-color: var(--sage);
+        }
+        
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(135, 168, 120, 0.15), rgba(135, 168, 120, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--forest);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 12px;
+        }
+        
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--forest);
+            opacity: 0.75;
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(45, 71, 57, 0.1);
+        }
+        .service-features li {
+            font-size: 0.85rem;
+            color: var(--forest);
+            opacity: 0.7;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--sage);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <section class="services">
+        <div class="section-header">
+            <span class="section-label">What we do</span>
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">We nurture ideas into digital products — and measure our success by your growth.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Product Strategy -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3>Product Strategy</h3>
+                <p>From seed to roadmap. We define what to build, why it matters to your users, and the fastest path to launch.</p>
+                <ul class="service-features">
+                    <li>Market & user research</li>
+                    <li>Product roadmapping</li>
+                    <li>Feature scoping & specs</li>
+                    <li>Go-to-market planning</li>
+                </ul>
+            </div>
+            
+            <!-- Web Development -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h3>Web Development</h3>
+                <p>Rooted in performance, built to scale. Web applications that users need and businesses grow on.</p>
+                <ul class="service-features">
+                    <li>Web applications & SaaS</li>
+                    <li>Landing pages & websites</li>
+                    <li>E-commerce solutions</li>
+                    <li>API development</li>
+                </ul>
+            </div>
+            
+            <!-- Telegram Solutions -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                    </svg>
+                </div>
+                <h3>Telegram Solutions</h3>
+                <p>Bots and Mini Apps that automate, engage, and convert. The most organic way to reach your audience.</p>
+                <ul class="service-features">
+                    <li>Custom Telegram bots</li>
+                    <li>Mini Apps (TWA)</li>
+                    <li>Payment integrations</li>
+                    <li>CRM & automation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
