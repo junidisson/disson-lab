@@ -2,32 +2,58 @@
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    category: 'Web Application',
-    description: 'Full-featured online store with inventory management, payment processing, and analytics dashboard.',
-    tags: ['Next.js', 'Stripe', 'PostgreSQL'],
+    title: 'Agentic Insights',
+    category: 'AI Dashboard',
+    description: 'AI-powered business analytics dashboard with real-time data visualization, reservations management, and intelligent reporting.',
+    tags: ['Next.js', 'AI/ML', 'Analytics'],
     color: 'from-sage/20 to-sage/5',
+    image: '/portfolio/agentic-insights.jpg',
+    url: '/portfolio/agentic-insights',
   },
   {
-    title: 'Delivery Bot',
-    category: 'Telegram Bot',
-    description: 'Automated ordering system for restaurant chain. Handles 500+ daily orders with payment integration.',
-    tags: ['Python', 'Telegram API', 'Redis'],
-    color: 'from-forest/15 to-forest/5',
-  },
-  {
-    title: 'SaaS Dashboard',
-    category: 'Web Application',
-    description: 'Real-time analytics platform for e-commerce businesses. Custom charts, reports, and alerts.',
-    tags: ['React', 'D3.js', 'WebSocket'],
+    title: 'Natura E-Commerce',
+    category: 'Online Store',
+    description: 'Premium organic skincare e-commerce platform with elegant product showcases, cart system, and seamless checkout experience.',
+    tags: ['E-Commerce', 'Tailwind', 'Stripe'],
     color: 'from-wood/30 to-wood/10',
+    image: '/portfolio/ecommerce.jpg',
+    url: '/portfolio/ecommerce',
   },
   {
-    title: 'Booking Mini App',
+    title: 'Titans Battle',
     category: 'Telegram Mini App',
-    description: 'Appointment scheduling system integrated with Google Calendar and payment processing.',
-    tags: ['TWA', 'Node.js', 'Calendar API'],
+    description: 'Epic turn-based combat game built as a Telegram Mini App. Character collection, gear upgrades, and competitive arena battles.',
+    tags: ['Telegram TWA', 'Game Dev', 'Node.js'],
+    color: 'from-forest/15 to-forest/5',
+    image: '/portfolio/titans-battle.jpg',
+    url: '/portfolio/titans-battle',
+  },
+  {
+    title: 'OrderFlow Bot',
+    category: 'Telegram Bot',
+    description: 'Automated ordering and support system for businesses. Handles orders, answers questions, and manages workflows — all inside Telegram.',
+    tags: ['Telegram API', 'Python', 'Automation'],
     color: 'from-sage/20 to-sage/5',
+    image: '/portfolio/telegram-bot.jpg',
+    url: '/portfolio/telegram-bot',
+  },
+  {
+    title: 'Botion AI Notes',
+    category: 'SaaS Landing',
+    description: 'Startup landing page for a Botion AI meeting notes product. Clean design with pricing tiers, feature highlights, and conversion-optimized layout.',
+    tags: ['React', 'SaaS', 'Landing Page'],
+    color: 'from-forest/15 to-forest/5',
+    image: '/portfolio/startup-landing.jpg',
+    url: '/portfolio/startup-landing',
+  },
+  {
+    title: 'AgentOS Dashboard',
+    category: 'Web Application',
+    description: 'AI assistant control center with real-time monitoring, conversation management, workflow builder, and knowledge base integration.',
+    tags: ['Dashboard', 'WebSocket', 'AI Agents'],
+    color: 'from-wood/30 to-wood/10',
+    image: '/portfolio/ai-dashboard.jpg',
+    url: '/portfolio/ai-dashboard',
   },
 ];
 
@@ -49,19 +75,25 @@ export function Portfolio() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
               className="group bg-white border border-forest/10 rounded-2xl overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg hover:border-sage"
             >
-              {/* Preview area */}
-              <div className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                <span className="text-forest/40 font-display text-lg">{project.category}</span>
+              {/* Preview area with actual image */}
+              <div className="h-48 overflow-hidden relative">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-top transition-transform group-hover:scale-105"
+                />
+                {/* Overlay for better text readability if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               
               {/* Content */}
-              <div className="p-8">
+              <div className="p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xs font-medium text-sage uppercase tracking-wide">
                     {project.category}

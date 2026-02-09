@@ -33,7 +33,7 @@ const services = [
     ),
     title: 'AI Agents',
     description: 'We embed intelligent agents into your products — turning complex requests into clear, actionable answers.',
-    features: ['AI agents for any workflow', 'Natural language interfaces', 'Semantic layers & data retrieval', 'Embedded assistants'],
+    features: ['AI agents for any workflow', 'Natural language interfaces', 'Semantic layers & data retrieval'],
   },
   {
     icon: (

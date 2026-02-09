@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natura — Organic Skincare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: '#E8E2D9',
+            stone: '#9C9589',
+            bark: '#3D3D3D',
+            moss: '#7A8B6E',
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-sand min-h-screen font-sans text-bark">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-sand/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="font-display text-2xl tracking-widest">NATURA</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#" class="text-sm tracking-wide hover:text-moss transition">Shop</a>
+        <a href="#" class="text-sm tracking-wide hover:text-moss transition">About</a>
+        <a href="#" class="text-sm tracking-wide hover:text-moss transition">Ingredients</a>
+        <a href="#" class="text-sm tracking-wide hover:text-moss transition">Journal</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button class="p-2 hover:bg-bark/5 rounded-full transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+        <button class="p-2 hover:bg-bark/5 rounded-full transition relative">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="absolute -top-1 -right-1 w-4 h-4 bg-moss text-white text-xs rounded-full flex items-center justify-center">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-sm tracking-[0.2em] text-stone uppercase mb-4">New Collection</p>
+        <h1 class="font-display text-5xl md:text-7xl leading-tight mb-6">
+          Beauty<br>from the<br>Earth
+        </h1>
+        <p class="text-stone leading-relaxed mb-8 max-w-md">
+          Pure, organic skincare crafted from nature's finest ingredients. 
+          No synthetics. No compromises. Just radiant, healthy skin.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class="px-8 py-4 bg-bark text-sand text-sm tracking-wide rounded-full hover:bg-bark/90 transition">
+            Shop Collection
+          </a>
+          <a href="#" class="px-8 py-4 border border-bark text-sm tracking-wide rounded-full hover:bg-bark hover:text-sand transition">
+            Our Story
+          </a>
+        </div>
+      </div>
+      
+      <!-- Product Image -->
+      <div class="relative">
+        <div class="aspect-[4/5] rounded-3xl overflow-hidden">
+          <img src="images/hero.png" alt="Natura Skincare Collection" class="w-full h-full object-cover">
+        </div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
+          <p class="text-xs text-stone uppercase tracking-wide">Best Seller</p>
+          <p class="font-display text-lg">Renewal Serum</p>
+          <p class="text-moss font-medium">$68.00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <p class="text-sm tracking-[0.2em] text-stone uppercase mb-2">Curated Selection</p>
+          <h2 class="font-display text-4xl">Bestsellers</h2>
+        </div>
+        <a href="#" class="text-sm tracking-wide text-bark hover:text-moss transition flex items-center gap-2">
+          View All 
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <!-- Product 1 -->
+        <div class="group">
+          <div class="aspect-square bg-sand rounded-2xl mb-4 overflow-hidden relative">
+            <img src="images/mist.png" alt="Hydrating Mist" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/10 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <button class="px-6 py-2 bg-white rounded-full text-sm">Quick Add</button>
+            </div>
+          </div>
+          <h3 class="font-display text-lg mb-1">Hydrating Mist</h3>
+          <p class="text-stone text-sm mb-2">Rose & Aloe</p>
+          <p class="font-medium">$42.00</p>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="group">
+          <div class="aspect-square bg-sand rounded-2xl mb-4 overflow-hidden relative">
+            <img src="images/serum.png" alt="Renewal Serum" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 px-2 py-1 bg-moss text-white text-xs rounded-full">New</div>
+            <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/10 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <button class="px-6 py-2 bg-white rounded-full text-sm">Quick Add</button>
+            </div>
+          </div>
+          <h3 class="font-display text-lg mb-1">Renewal Serum</h3>
+          <p class="text-stone text-sm mb-2">Vitamin C & Botanical</p>
+          <p class="font-medium">$68.00</p>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="group">
+          <div class="aspect-square bg-sand rounded-2xl mb-4 overflow-hidden relative">
+            <img src="images/cream.png" alt="Night Cream" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/10 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <button class="px-6 py-2 bg-white rounded-full text-sm">Quick Add</button>
+            </div>
+          </div>
+          <h3 class="font-display text-lg mb-1">Night Cream</h3>
+          <p class="text-stone text-sm mb-2">Retinol & Shea</p>
+          <p class="font-medium">$54.00</p>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="group">
+          <div class="aspect-square bg-sand rounded-2xl mb-4 overflow-hidden relative">
+            <img src="images/oil.png" alt="Cleansing Oil" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-bark/0 group-hover:bg-bark/10 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <button class="px-6 py-2 bg-white rounded-full text-sm">Quick Add</button>
+            </div>
+          </div>
+          <h3 class="font-display text-lg mb-1">Cleansing Oil</h3>
+          <p class="text-stone text-sm mb-2">Jojoba & Chamomile</p>
+          <p class="font-medium">$38.00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-moss/10 flex items-center justify-center">
+            <span class="text-2xl">🌿</span>
+          </div>
+          <h3 class="font-display text-xl mb-3">100% Organic</h3>
+          <p class="text-stone text-sm leading-relaxed">
+            Every ingredient is certified organic, sustainably sourced, and free from harmful chemicals.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-moss/10 flex items-center justify-center">
+            <span class="text-2xl">🐰</span>
+          </div>
+          <h3 class="font-display text-xl mb-3">Cruelty-Free</h3>
+          <p class="text-stone text-sm leading-relaxed">
+            Never tested on animals. We believe beauty should be kind — to you and to the world.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-moss/10 flex items-center justify-center">
+            <span class="text-2xl">♻️</span>
+          </div>
+          <h3 class="font-display text-xl mb-3">Zero Waste</h3>
+          <p class="text-stone text-sm leading-relaxed">
+            Refillable containers and plastic-free packaging. Our commitment to the planet runs deep.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-24 bg-bark text-sand">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="font-display text-4xl mb-4">Join the Ritual</h2>
+      <p class="text-sand/70 mb-8">
+        Subscribe for exclusive offers, skincare tips, and early access to new products.
+      </p>
+      <form class="flex gap-3 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Your email"
+          class="flex-1 px-5 py-3 bg-sand/10 border border-sand/20 rounded-full text-sand placeholder:text-sand/40 focus:outline-none focus:border-sand/40"
+        >
+        <button class="px-6 py-3 bg-sand text-bark rounded-full font-medium hover:bg-sand/90 transition">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-bark text-sand/70 border-t border-sand/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="font-display text-xl text-sand tracking-widest">NATURA</p>
+        <p class="text-sm">© 2026 Natura. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-sand transition">Instagram</a>
+          <a href="#" class="hover:text-sand transition">Pinterest</a>
+          <a href="#" class="hover:text-sand transition">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

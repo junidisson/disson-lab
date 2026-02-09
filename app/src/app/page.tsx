@@ -19,11 +19,11 @@ export default function Home() {
       <footer className="py-8 px-6 bg-cream border-t border-forest/10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="font-display text-lg">
-            <span className="text-sage">Disson</span>
-            <span className="text-forest">Lab</span>
+            <span className="text-forest">Disson</span>
+            <span className="text-sage">Lab</span>
           </div>
           <p className="text-sm text-forest/50">
-            © 2026 Disson Lab. Grown with 🌱
+            © 2026 Disson Lab. Grown in harmony. 🌱
           </p>
         </div>
       </footer>

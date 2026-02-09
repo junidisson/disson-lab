@@ -55,7 +55,7 @@ export function About() {
               </div>
               <div>
                 <h4 className="font-semibold text-forest mb-1">Sustainable by design</h4>
-                <p className="text-sm text-forest/70">Clean code, clear architecture. Products that scale without breaking.</p>
+                <p className="text-sm text-forest/70">Clean code, clear architecture. Products that thrive at any scale.</p>
               </div>
             </div>
 
@@ -65,7 +65,7 @@ export function About() {
               </div>
               <div>
                 <h4 className="font-semibold text-forest mb-1">Partnership, not just service</h4>
-                <p className="text-sm text-forest/70">Your success is our metric. We're invested in outcomes, not just outputs.</p>
+                <p className="text-sm text-forest/70">Your success is our metric. Your growth is our growth. We stay involved long after launch.</p>
               </div>
             </div>
 

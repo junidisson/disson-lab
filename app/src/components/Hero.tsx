@@ -7,7 +7,7 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
       {/* Background Image */}
       <img
-        src="/hero-bg.png"
+        src="/hero-background.png"
         alt=""
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
@@ -18,8 +18,8 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-20 max-w-4xl px-6 md:px-10">
         <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-2">
-          <span className="text-sage font-medium">Disson</span>
-          <span className="text-forest">Lab</span>
+          <span className="text-forest font-medium">Disson</span>
+          <span className="text-sage">Lab</span>
         </h1>
         
         <p className="text-lg md:text-xl text-forest/85 tracking-wide mb-12 leading-relaxed">

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titans Battle — Epic Turn-Based Combat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#0A0A0F',
+            storm: '#1A1A2E',
+            ember: '#FF6B35',
+            ice: '#4ECDC4',
+            gold: '#FFD700',
+            steel: '#8892A0',
+          },
+          fontFamily: {
+            display: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glow-ember { box-shadow: 0 0 60px rgba(255, 107, 53, 0.3); }
+    .glow-ice { box-shadow: 0 0 60px rgba(78, 205, 196, 0.3); }
+    .gradient-text {
+      background: linear-gradient(135deg, #FF6B35, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-void min-h-screen font-sans text-white">
+  <!-- Particles Background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-ember/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-ice/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-void/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="font-display text-xl tracking-wider">
+        <span class="text-ember">TITANS</span>
+        <span class="text-steel">BATTLE</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#" class="text-sm text-steel hover:text-white transition">Game</a>
+        <a href="#" class="text-sm text-steel hover:text-white transition">Characters</a>
+        <a href="#" class="text-sm text-steel hover:text-white transition">Updates</a>
+      </nav>
+      <a href="#" class="px-5 py-2 bg-ember text-void text-sm font-semibold rounded-lg hover:bg-ember/90 transition">
+        Play Now
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center pt-20 relative">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-ember/20 rounded-full mb-6">
+          <span class="w-2 h-2 bg-ember rounded-full animate-pulse"></span>
+          <span class="text-xs text-ember font-medium">Telegram Mini App</span>
+        </div>
+        
+        <h1 class="font-display text-5xl md:text-7xl leading-tight mb-6">
+          <span class="gradient-text">Forge Your</span><br>
+          <span class="text-white">Legend</span>
+        </h1>
+        
+        <p class="text-steel text-lg leading-relaxed mb-8 max-w-md">
+          Command mighty Titans in strategic turn-based battles. 
+          Level up, collect gear, and conquer the arena — all inside Telegram.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a href="#" class="px-8 py-4 bg-gradient-to-r from-ember to-gold text-void font-semibold rounded-xl hover:opacity-90 transition flex items-center gap-2">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Play in Telegram
+          </a>
+          <a href="#" class="px-8 py-4 border border-steel/30 text-steel rounded-xl hover:border-ice hover:text-ice transition">
+            Watch Trailer
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex gap-8">
+          <div>
+            <p class="text-3xl font-display text-gold">12K+</p>
+            <p class="text-sm text-steel">Players</p>
+          </div>
+          <div>
+            <p class="text-3xl font-display text-ice">50+</p>
+            <p class="text-sm text-steel">Titans</p>
+          </div>
+          <div>
+            <p class="text-3xl font-display text-ember">100+</p>
+            <p class="text-sm text-steel">Items</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Art -->
+      <div class="relative">
+        <div class="aspect-square rounded-3xl glow-ember overflow-hidden border border-ember/20">
+          <img src="images/hero.png" alt="Titan Warrior" class="w-full h-full object-cover">
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-ice to-ice/50 rounded-2xl flex items-center justify-center glow-ice">
+          <span class="text-4xl">🛡️</span>
+        </div>
+        <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-ember to-ember/50 rounded-2xl flex items-center justify-center glow-ember">
+          <span class="text-3xl">⚡</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm tracking-[0.2em] text-ember uppercase mb-2">Features</p>
+        <h2 class="font-display text-4xl">Strategic Depth</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-storm/50 rounded-2xl p-8 border border-white/5 hover:border-ember/30 transition">
+          <div class="w-14 h-14 bg-ember/20 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">⚔️</span>
+          </div>
+          <h3 class="font-display text-xl mb-3">Turn-Based Combat</h3>
+          <p class="text-steel text-sm leading-relaxed">
+            Plan your moves carefully. Every decision matters in battles where strategy beats button-mashing.
+          </p>
+        </div>
+
+        <div class="bg-storm/50 rounded-2xl p-8 border border-white/5 hover:border-ice/30 transition">
+          <div class="w-14 h-14 bg-ice/20 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🎭</span>
+          </div>
+          <h3 class="font-display text-xl mb-3">Unique Classes</h3>
+          <p class="text-steel text-sm leading-relaxed">
+            Choose from Barbarians, Paladins, Mages, and more. Each class has unique skills and playstyles.
+          </p>
+        </div>
+
+        <div class="bg-storm/50 rounded-2xl p-8 border border-white/5 hover:border-gold/30 transition">
+          <div class="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🎒</span>
+          </div>
+          <h3 class="font-display text-xl mb-3">Deep Progression</h3>
+          <p class="text-steel text-sm leading-relaxed">
+            Level up your Titan, collect epic loot, and craft powerful builds to dominate the arena.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Classes Preview -->
+  <section class="py-24 bg-storm/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm tracking-[0.2em] text-ice uppercase mb-2">Choose Your Path</p>
+        <h2 class="font-display text-4xl">Titan Classes</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="group cursor-pointer">
+          <div class="aspect-[3/4] rounded-2xl mb-4 overflow-hidden border border-ember/20 group-hover:border-ember/50 transition">
+            <img src="images/barbarian.png" alt="Barbarian" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display text-lg text-center">Barbarian</h3>
+          <p class="text-sm text-steel text-center">Raw Power</p>
+        </div>
+
+        <div class="group cursor-pointer">
+          <div class="aspect-[3/4] rounded-2xl mb-4 overflow-hidden border border-gold/20 group-hover:border-gold/50 transition">
+            <img src="images/paladin.png" alt="Paladin" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display text-lg text-center">Paladin</h3>
+          <p class="text-sm text-steel text-center">Holy Guardian</p>
+        </div>
+
+        <div class="group cursor-pointer">
+          <div class="aspect-[3/4] rounded-2xl mb-4 overflow-hidden border border-ice/20 group-hover:border-ice/50 transition">
+            <img src="images/mage.png" alt="Mage" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display text-lg text-center">Mage</h3>
+          <p class="text-sm text-steel text-center">Arcane Master</p>
+        </div>
+
+        <div class="group cursor-pointer">
+          <div class="aspect-[3/4] rounded-2xl mb-4 overflow-hidden border border-steel/20 group-hover:border-steel/50 transition">
+            <img src="images/rogue.png" alt="Rogue" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display text-lg text-center">Rogue</h3>
+          <p class="text-sm text-steel text-center">Shadow Blade</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="font-display text-4xl md:text-5xl mb-6">
+        <span class="gradient-text">Your Legend Awaits</span>
+      </h2>
+      <p class="text-steel text-lg mb-8">
+        Join thousands of players battling for glory. Free to play, no downloads required.
+      </p>
+      <a href="#" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-ember to-gold text-void font-semibold rounded-xl hover:opacity-90 transition text-lg">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        Start Playing Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="font-display text-lg">
+          <span class="text-ember">TITANS</span>
+          <span class="text-steel">BATTLE</span>
+        </div>
+        <p class="text-sm text-steel">© 2026 Disson Lab. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-steel hover:text-white transition">Discord</a>
+          <a href="#" class="text-steel hover:text-white transition">Twitter</a>
+          <a href="#" class="text-steel hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
